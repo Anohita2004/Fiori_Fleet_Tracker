@@ -1,0 +1,86 @@
+<mvc:View
+    controllerName="fleetTracker.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
+        <content>
+            <VBox class="fleetPage" width="100%">
+
+                <!-- Dashboard heading -->
+                <HBox
+                    class="fleetHeader"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                    wrap="Wrap">
+
+                    <VBox>
+                        <Title
+                            text="Fleet Overview"
+                            level="H1"
+                            class="fleetTitle"/>
+                        <Text
+                            text="Monitor your vehicles in real time"
+                            class="fleetSubtitle"/>
+                    </VBox>
+                </HBox>
+
+                <!-- KPI cards -->
+                <HBox
+                    class="fleetKpiRow"
+                    wrap="Wrap"
+                    alignItems="Stretch">
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon
+                                src="sap-icon://shipping-status"
+                                class="fleetKpiIcon"/>
+                            <Text text="Total Vehicles"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/totalVehicles}"
+                               level="H2"/>
+                        <Text text="Registered fleet"/>
+                    </VBox>
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon
+                                src="sap-icon://accept"
+                                class="fleetKpiIcon fleetGreen"/>
+                            <Text text="Active Vehicles"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/active}"
+                               level="H2"/>
+                        <Text text="Currently active"/>
+                    </VBox>
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon
+                                src="sap-icon://wrench"
+                                class="fleetKpiIcon fleetOrange"/>
+                            <Text text="Maintenance"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/inMaintenance}"
+                               level="H2"/>
+                        <Text text="Under maintenance"/>
+                    </VBox>
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon
+                                src="sap-icon://alert"
+                                class="fleetKpiIcon fleetRed"/>
+                            <Text text="Inactive Vehicles"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/inactive}"
+                               level="H2"/>
+                        <Text text="Require attention"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

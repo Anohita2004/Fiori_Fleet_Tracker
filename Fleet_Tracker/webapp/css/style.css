@@ -1,0 +1,124 @@
+/* Main dashboard canvas */
+.fleetPage {
+    min-height: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    background:
+        radial-gradient(ellipse at 10% 0%,
+            rgba(193, 164, 255, 0.45), transparent 42%),
+        radial-gradient(ellipse at 100% 100%,
+            rgba(224, 205, 255, 0.55), transparent 40%),
+        linear-gradient(135deg, #f1edff, #f8f9ff 55%, #eee8ff);
+}
+
+/* Header */
+.fleetHeader {
+    padding: 0.5rem 0 1.5rem;
+    gap: 1rem;
+}
+
+.fleetTitle {
+    color: #292044 !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+}
+
+.fleetSubtitle {
+    color: #77718f;
+    margin-top: 0.25rem;
+}
+
+.fleetRefresh {
+    border-radius: 0.75rem;
+}
+
+/* KPI cards */
+.fleetKpiRow {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.fleetKpiCard {
+    flex: 1 1 12rem;
+    min-width: 10rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 1.1rem;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 8px 25px rgba(82, 65, 130, 0.09);
+    gap: 0.65rem;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.fleetKpiCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 30px rgba(82, 65, 130, 0.15);
+}
+
+.fleetKpiIcon {
+    color: #7956cf;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.fleetGreen {
+    color: #159b68;
+}
+
+.fleetOrange {
+    color: #d98724;
+}
+
+.fleetRed {
+    color: #df526d;
+}
+
+/* Main table card & Forms */
+.fleetTableCard, .fleetFormCard {
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 10px 32px rgba(82, 65, 130, 0.10);
+    overflow: hidden;
+}
+
+.fleetTableHeader {
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fleetTable .sapMListTblHeaderCell {
+    background: #f3efff;
+    border-bottom: 1px solid #e6def9;
+}
+
+.fleetTable .sapMListTblHeaderCell .sapMText {
+    color: #63567f;
+    font-weight: 600;
+}
+
+.fleetTable .sapMListTblRow {
+    transition: background-color 0.18s ease;
+}
+
+.fleetTable .sapMListTblRow:hover {
+    background-color: #f7f4ff;
+}
+
+.fleetTable .sapMListTblCell {
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+}
+
+.fleetShowcaseCard { padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 1.5rem; background: rgba(255, 255, 255, 0.9); box-shadow: 0 15px 40px rgba(82, 65, 130, 0.12); display: flex; flex-direction: column; justifyContent: space-between; } 
+.fleetBtn { border-radius: 1rem; }
+
+.fleetBorderedBox { border: 1px solid #e6def9; border-radius: 0.8rem; padding: 1rem; } 
+.fleetBatteryVisual { border: 2px solid #bbaee0; border-radius: 4px; position: relative; width: 40px; height: 80px; } 
+.fleetBatteryFill { background-color: #159b68; position: absolute; bottom: 0; width: 100%; border-radius: 2px; }
+
+.fleetBorderedBox { background: rgba(255, 255, 255, 0.4); } 
+.fleetTransparentTabBar .sapMITBHead { background-color: transparent !important; border-bottom: none !important; }

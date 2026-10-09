@@ -1,0 +1,201 @@
+<mvc:View
+    controllerName="fleetTracker.controller.DriverCreation"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
+        <content>
+            <VBox class="fleetPage" width="100%">
+                
+                <!-- Header -->
+                <HBox alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap" class="sapUiMediumMarginBottom sapUiSmallMarginTop">
+                    <VBox>
+                        <Title text="Driver Creation" level="H1" class="fleetTitle"/>
+                        <Text text="Add new drivers details to the fleet" class="fleetSubtitle"/>
+                    </VBox>
+                    <Button text="Back to List" icon="sap-icon://nav-back" type="Transparent" class="fleetLightBtn"/>
+                </HBox>
+
+                <!-- Main Layout -->
+                <layout:Grid defaultSpan="L8 M12 S12" class="sapUiNoMargin" hSpacing="1">
+                    
+                    <!-- Left Column: Form -->
+                    <VBox>
+                        <layoutData><layout:GridData span="L8 M12 S12"/></layoutData>
+                        <VBox class="fleetFormCard">
+                            
+                            <HBox alignItems="Center" class="sapUiMediumMarginBottom">
+                                <core:Icon src="sap-icon://employee" size="1.5rem" class="sapUiMediumMarginRight fleetSectionIcon"/>
+                                <VBox>
+                                    <Title text="Driver Information" level="H3"/>
+                                    <Text text="Enter the driver's personal and professional details" class="fleetSubtitle"/>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Personal Details -->
+                            <HBox alignItems="Center" class="sapUiSmallMarginBottom sapUiMediumMarginTop" backgroundDesign="Solid" style="background:#f3efff; padding:0.5rem; border-radius:0.5rem;">
+                                <core:Icon src="sap-icon://person-placeholder" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                <Title text="Personal Details" level="H5" class="fleetSectionText"/>
+                            </HBox>
+                            
+                            <layout:Grid defaultSpan="L6 M6 S12" vSpacing="1" hSpacing="1">
+                                <VBox><Label text="Full Name" required="true"/><Input placeholder="Enter full name"/></VBox>
+                                <VBox><Label text="Date of Birth" required="true"/><DatePicker placeholder="dd-mm-yyyy"/></VBox>
+                                <VBox><Label text="Gender" required="true"/><ComboBox placeholder="Select gender" width="100%"><core:Item key="M" text="Male"/><core:Item key="F" text="Female"/></ComboBox></VBox>
+                                <VBox><Label text="Contact Number" required="true"/><Input placeholder="Enter 10 digit number"/></VBox>
+                                <VBox><Label text="Email ID"/><Input placeholder="Enter email address"/></VBox>
+                                <VBox><Label text="Address" required="true"/><Input placeholder="Enter complete address"/></VBox>
+                            </layout:Grid>
+
+                            <!-- Driving Details -->
+                            <HBox alignItems="Center" class="sapUiMediumMarginTop sapUiSmallMarginBottom" backgroundDesign="Solid" style="background:#f3efff; padding:0.5rem; border-radius:0.5rem;">
+                                <core:Icon src="sap-icon://steering-wheel" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                <Title text="Driving Details" level="H5" class="fleetSectionText"/>
+                            </HBox>
+
+                            <layout:Grid defaultSpan="L6 M6 S12" vSpacing="1" hSpacing="1">
+                                <VBox><Label text="License Number" required="true"/><Input placeholder="Enter license number"/></VBox>
+                                <VBox><Label text="License Expiry Date" required="true"/><DatePicker placeholder="dd-mm-yyyy"/></VBox>
+                                <VBox><Label text="License Type" required="true"/><ComboBox placeholder="Select license type" width="100%"><core:Item key="H" text="Heavy Commercial"/><core:Item key="L" text="Light Motor Vehicle"/></ComboBox></VBox>
+                                <VBox><Label text="Years of Experience" required="true"/><Input placeholder="Enter years of experience"/></VBox>
+                                <VBox>
+                                    <layoutData><layout:GridData span="L6 M12 S12"/></layoutData>
+                                    <Label text="Driving Experience (Vehicle Type)"/>
+                                    <ComboBox placeholder="Select vehicle type" width="100%"><core:Item key="T" text="Truck"/><core:Item key="V" text="Van"/></ComboBox>
+                                </VBox>
+                            </layout:Grid>
+
+                            <!-- Employment Details -->
+                            <HBox alignItems="Center" class="sapUiMediumMarginTop sapUiSmallMarginBottom" backgroundDesign="Solid" style="background:#f3efff; padding:0.5rem; border-radius:0.5rem;">
+                                <core:Icon src="sap-icon://suitcase" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                <Title text="Employment Details" level="H5" class="fleetSectionText"/>
+                            </HBox>
+
+                            <layout:Grid defaultSpan="L6 M6 S12" vSpacing="1" hSpacing="1">
+                                <VBox><Label text="Joining Date" required="true"/><DatePicker placeholder="dd-mm-yyyy"/></VBox>
+                                <VBox><Label text="Assigned Vehicle (Optional)"/><ComboBox placeholder="Select vehicle" width="100%"><core:Item key="T1" text="TRK-001"/></ComboBox></VBox>
+                                <VBox><Label text="Status" required="true"/><ComboBox selectedKey="A" width="100%"><core:Item key="A" text="Active"/><core:Item key="I" text="Inactive"/></ComboBox></VBox>
+                                <VBox><Label text="Emergency Contact Number" required="true"/><Input placeholder="Enter emergency contact"/></VBox>
+                            </layout:Grid>
+
+                            <!-- Footer Buttons -->
+                            <HBox class="sapUiLargeMarginTop">
+                                <Button text="Create Driver" type="Emphasized" icon="sap-icon://add-employee" class="sapUiSmallMarginRight fleetBtnPrimary"/>
+                                <Button text="Reset" icon="sap-icon://refresh" type="Transparent" class="sapUiSmallMarginRight fleetBorderedBox" style="padding:0; height:auto; display:flex; align-items:center;"/>
+                                <Button text="Cancel" icon="sap-icon://sys-cancel" type="Transparent" class="fleetBorderedBox" style="padding:0; height:auto; display:flex; align-items:center;"/>
+                            </HBox>
+
+                        </VBox>
+                    </VBox>
+
+                    <!-- Right Column -->
+                    <VBox>
+                        <layoutData><layout:GridData span="L4 M12 S12"/></layoutData>
+                        
+                        <!-- Driver Photo -->
+                        <VBox class="fleetFormCard sapUiSmallMarginBottom">
+                            <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+                                <core:Icon src="sap-icon://picture" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                <VBox>
+                                    <Title text="Driver Photo" level="H5"/>
+                                    <Text text="Upload a clear passport size photo" class="fleetSubtitle" style="font-size:0.8rem;"/>
+                                </VBox>
+                            </HBox>
+
+                            <VBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTopBottom fleetDropZone">
+                                <core:Icon src="sap-icon://person-placeholder" size="2.5rem" class="sapUiSmallMarginBottom" color="#b39ddb"/>
+                                <Title text="Drag and drop an image here" level="H6"/>
+                                <Text text="or click to browse" class="fleetSubtitle sapUiTinyMarginBottom"/>
+                                <Text text="Supported formats: JPG, JPEG, PNG (Max 2MB)" class="fleetSubtitle" style="font-size:0.7rem;"/>
+                            </VBox>
+
+                            <MessageStrip text="Please ensure the photo is clear and recent for identification purposes." type="Information" showIcon="true" class="sapUiSmallMarginTop"/>
+                        </VBox>
+
+                        <!-- Documents -->
+                        <VBox class="fleetFormCard sapUiSmallMarginBottom">
+                            <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+                                <core:Icon src="sap-icon://document" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                <VBox>
+                                    <Title text="Documents" level="H5"/>
+                                    <Text text="Upload driver's documents (optional)" class="fleetSubtitle" style="font-size:0.8rem;"/>
+                                </VBox>
+                            </HBox>
+
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop fleetBorderedBox" style="padding:0.5rem 1rem;">
+                                <HBox alignItems="Center">
+                                    <core:Icon src="sap-icon://attachment" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                    <VBox>
+                                        <Title text="Driving License" level="H6"/>
+                                        <Text text="PDF, JPG, PNG (Max 5MB)" class="fleetSubtitle" style="font-size:0.7rem;"/>
+                                    </VBox>
+                                </HBox>
+                                <Button text="Upload" icon="sap-icon://upload" type="Transparent" class="fleetLightBtn"/>
+                            </HBox>
+
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop fleetBorderedBox" style="padding:0.5rem 1rem;">
+                                <HBox alignItems="Center">
+                                    <core:Icon src="sap-icon://attachment" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                    <VBox>
+                                        <Title text="Other Document (ID Proof)" level="H6"/>
+                                        <Text text="PDF, JPG, PNG (Max 5MB)" class="fleetSubtitle" style="font-size:0.7rem;"/>
+                                    </VBox>
+                                </HBox>
+                                <Button text="Upload" icon="sap-icon://upload" type="Transparent" class="fleetLightBtn"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Recent Drivers -->
+                        <VBox class="fleetFormCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom">
+                                <HBox alignItems="Center">
+                                    <core:Icon src="sap-icon://group" class="sapUiSmallMarginRight fleetSectionIcon"/>
+                                    <Title text="Recent Drivers" level="H5"/>
+                                </HBox>
+                                <Link text="View All →"/>
+                            </HBox>
+
+                            <Table class="sapUiNoMargin" showSeparators="Inner">
+                                <columns>
+                                    <Column><Text text="Name" class="fleetSubtitle" style="font-size:0.8rem;"/></Column>
+                                    <Column demandPopin="true" minScreenWidth="Tablet"><Text text="License No." class="fleetSubtitle" style="font-size:0.8rem;"/></Column>
+                                    <Column hAlign="Center"><Text text="Status" class="fleetSubtitle" style="font-size:0.8rem;"/></Column>
+                                    <Column hAlign="End" width="3rem"></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Title text="John Doe" level="H6" style="font-size:0.85rem;"/>
+                                            <Text text="MH12AB1234" style="font-size:0.8rem;"/>
+                                            <ObjectStatus text="Active" state="Success" style="font-size:0.75rem;"/>
+                                            <core:Icon src="sap-icon://show" color="#7956cf" class="sapUiTinyMarginEnd"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Title text="Jane Smith" level="H6" style="font-size:0.85rem;"/>
+                                            <Text text="KA05CD5678" style="font-size:0.8rem;"/>
+                                            <ObjectStatus text="Active" state="Success" style="font-size:0.75rem;"/>
+                                            <core:Icon src="sap-icon://show" color="#7956cf" class="sapUiTinyMarginEnd"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Title text="Mike Johnson" level="H6" style="font-size:0.85rem;"/>
+                                            <Text text="DL01EF9012" style="font-size:0.8rem;"/>
+                                            <ObjectStatus text="Inactive" state="Error" style="font-size:0.75rem;"/>
+                                            <core:Icon src="sap-icon://show" color="#7956cf" class="sapUiTinyMarginEnd"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+
+                    </VBox>
+                </layout:Grid>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

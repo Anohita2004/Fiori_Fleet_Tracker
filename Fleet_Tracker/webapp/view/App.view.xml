@@ -1,0 +1,40 @@
+<mvc:View
+    controllerName="fleetTracker.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton"
+                        icon="sap-icon://menu2"
+                        type="Transparent"
+                        press=".onCollapseExpandPress">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer width="20px" />
+                <Title text="{i18n>appTitle}" />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation" selectedKey="Home" itemSelect=".onItemSelect">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem text="Dashboard" icon="sap-icon://bov" key="Home" />
+                    <tnt:NavigationListItem text="Truck Tracking" icon="sap-icon://shipping-status" key="TruckTracking" />
+                    <tnt:NavigationListItem text="Vehicle Details" icon="sap-icon://car" key="VehicleDetail" />
+                    <tnt:NavigationListItem text="Live Location" icon="sap-icon://map-2" key="LiveLocation" />
+                    <tnt:NavigationListItem text="Driver Creation" icon="sap-icon://employee" key="DriverCreation" />
+                    <tnt:NavigationListItem text="Truck Allocation" icon="sap-icon://user-edit" key="TruckAllocation" />
+                    <tnt:NavigationListItem text="Operations Support" icon="sap-icon://supplier" key="OperationsSupport" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <App id="appContainer"></App>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

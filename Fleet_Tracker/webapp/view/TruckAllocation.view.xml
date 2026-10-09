@@ -1,0 +1,53 @@
+<mvc:View
+    controllerName="fleetTracker.controller.TruckAllocation"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
+        <content>
+            <VBox class="fleetPage" width="100%">
+
+                <HBox class="fleetHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+                    <VBox>
+                        <Title text="Truck Allocation" level="H1" class="fleetTitle"/>
+                        <Text text="Assign drivers to specific vehicles" class="fleetSubtitle"/>
+                    </VBox>
+                </HBox>
+
+                <VBox class="fleetFormCard">
+                    <form:SimpleForm id="allocationForm"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+                        columnsXL="1" columnsL="1" columnsM="1"
+                        singleContainerFullSize="false">
+                        <form:content>
+                            <Label text="Select Driver" required="true" />
+                            <ComboBox id="driverSelect" placeholder="Choose a driver">
+                                <core:Item xmlns:core="sap.ui.core" key="D1" text="John Doe" />
+                                <core:Item xmlns:core="sap.ui.core" key="D2" text="Jane Smith" />
+                                <core:Item xmlns:core="sap.ui.core" key="D3" text="Mike Johnson" />
+                            </ComboBox>
+
+                            <Label text="Select Truck" required="true" />
+                            <ComboBox id="truckSelect" placeholder="Choose a truck"
+                                items="{fleet>/vehicles}">
+                                <core:Item xmlns:core="sap.ui.core" key="{fleet>id}" text="{fleet>id} - {fleet>location}" />
+                            </ComboBox>
+                            
+                            <Label text="Allocation Date" required="true" />
+                            <DatePicker id="allocDate" placeholder="Enter Date" />
+                        </form:content>
+                    </form:SimpleForm>
+                    <Toolbar style="Clear">
+                        <ToolbarSpacer/>
+                        <Button text="Allocate" type="Emphasized" press=".onAllocate" />
+                    </Toolbar>
+                </VBox>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

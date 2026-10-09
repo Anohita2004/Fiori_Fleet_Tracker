@@ -1,0 +1,212 @@
+{
+  "metrics": {
+    "totalVehicles": 120,
+    "active": 95,
+    "inMaintenance": 15,
+    "inactive": 10,
+    "totalDistance": "450,230 km",
+    "fuelEfficiency": "14 L/100km"
+  },
+  "vehicles": [
+    {
+      "id": "TRK-001",
+      "driver": "John Doe",
+      "status": "Active",
+      "location": "New York, NY",
+      "speed": "65 mph",
+      "fuelLevel": 78,
+      "lastUpdate": "2 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-002",
+      "driver": "Jane Smith",
+      "status": "In Maintenance",
+      "location": "Chicago, IL",
+      "speed": "0 mph",
+      "fuelLevel": 45,
+      "lastUpdate": "1 hour ago",
+      "imageUrl": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-003",
+      "driver": "Mike Johnson",
+      "status": "Active",
+      "location": "Austin, TX",
+      "speed": "55 mph",
+      "fuelLevel": 92,
+      "lastUpdate": "5 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-004",
+      "driver": "Sarah Williams",
+      "status": "Inactive",
+      "location": "Seattle, WA",
+      "speed": "0 mph",
+      "fuelLevel": 12,
+      "lastUpdate": "1 day ago",
+      "imageUrl": "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-005",
+      "driver": "Robert Brown",
+      "status": "Active",
+      "location": "Miami, FL",
+      "speed": "70 mph",
+      "fuelLevel": 60,
+      "lastUpdate": "10 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1566008885218-90abf9200ddb?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-006",
+      "driver": "Emily Davis",
+      "status": "Active",
+      "location": "Dallas, TX",
+      "speed": "62 mph",
+      "fuelLevel": 84,
+      "lastUpdate": "3 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-007",
+      "driver": "Daniel Wilson",
+      "status": "In Maintenance",
+      "location": "Denver, CO",
+      "speed": "0 mph",
+      "fuelLevel": 33,
+      "lastUpdate": "2 hours ago",
+      "imageUrl": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-008",
+      "driver": "Olivia Martinez",
+      "status": "Active",
+      "location": "Phoenix, AZ",
+      "speed": "58 mph",
+      "fuelLevel": 71,
+      "lastUpdate": "6 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-009",
+      "driver": "James Anderson",
+      "status": "Inactive",
+      "location": "Portland, OR",
+      "speed": "0 mph",
+      "fuelLevel": 18,
+      "lastUpdate": "8 hours ago",
+      "imageUrl": "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-010",
+      "driver": "Sophia Taylor",
+      "status": "Active",
+      "location": "Atlanta, GA",
+      "speed": "67 mph",
+      "fuelLevel": 89,
+      "lastUpdate": "4 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1566008885218-90abf9200ddb?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-011",
+      "driver": "Benjamin Thomas",
+      "status": "Active",
+      "location": "Houston, TX",
+      "speed": "54 mph",
+      "fuelLevel": 56,
+      "lastUpdate": "9 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-012",
+      "driver": "Isabella Jackson",
+      "status": "In Maintenance",
+      "location": "San Diego, CA",
+      "speed": "0 mph",
+      "fuelLevel": 27,
+      "lastUpdate": "3 hours ago",
+      "imageUrl": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-013",
+      "driver": "Lucas White",
+      "status": "Active",
+      "location": "Nashville, TN",
+      "speed": "61 mph",
+      "fuelLevel": 76,
+      "lastUpdate": "7 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-014",
+      "driver": "Mia Harris",
+      "status": "Active",
+      "location": "Las Vegas, NV",
+      "speed": "72 mph",
+      "fuelLevel": 94,
+      "lastUpdate": "2 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1566008885218-90abf9200ddb?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-015",
+      "driver": "Ethan Clark",
+      "status": "Inactive",
+      "location": "Boston, MA",
+      "speed": "0 mph",
+      "fuelLevel": 9,
+      "lastUpdate": "2 days ago",
+      "imageUrl": "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-016",
+      "driver": "Amelia Lewis",
+      "status": "Active",
+      "location": "Philadelphia, PA",
+      "speed": "49 mph",
+      "fuelLevel": 63,
+      "lastUpdate": "12 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-017",
+      "driver": "Mason Lee",
+      "status": "In Maintenance",
+      "location": "Detroit, MI",
+      "speed": "0 mph",
+      "fuelLevel": 40,
+      "lastUpdate": "5 hours ago",
+      "imageUrl": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-018",
+      "driver": "Charlotte Walker",
+      "status": "Active",
+      "location": "San Antonio, TX",
+      "speed": "57 mph",
+      "fuelLevel": 81,
+      "lastUpdate": "5 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-019",
+      "driver": "Alexander Hall",
+      "status": "Active",
+      "location": "Charlotte, NC",
+      "speed": "64 mph",
+      "fuelLevel": 52,
+      "lastUpdate": "11 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1566008885218-90abf9200ddb?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "TRK-020",
+      "driver": "Harper Allen",
+      "status": "In Maintenance",
+      "location": "Minneapolis, MN",
+      "speed": "0 mph",
+      "fuelLevel": 36,
+      "lastUpdate": "90 mins ago",
+      "imageUrl": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}

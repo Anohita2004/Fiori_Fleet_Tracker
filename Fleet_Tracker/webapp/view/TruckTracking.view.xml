@@ -1,0 +1,63 @@
+<mvc:View
+    controllerName="fleetTracker.controller.TruckTracking"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
+        <content>
+            <VBox class="fleetPage" width="100%">
+                
+                <!-- Header -->
+                <HBox class="fleetHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+                    <VBox>
+                        <Title text="Truck Tracking" level="H1" class="fleetTitle"/>
+                        <Text text="Live vehicle status" class="fleetSubtitle"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Vehicle list -->
+                <VBox class="fleetTableCard">
+                    <HBox class="fleetTableHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+                        <VBox>
+                            <Title text="Vehicle Status" level="H2"/>
+                            <Text text="Real-time fleet information"/>
+                        </VBox>
+                        <SearchField width="17rem" placeholder="Search by Vehicle ID..." search=".onSearch" />
+                    </HBox>
+
+                    <Table id="vehiclesTable"
+                        items="{path: 'fleet>/vehicles'}"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        class="fleetTable">
+                        <columns>
+                            <Column><Text text="Vehicle"/></Column>
+                            <Column><Text text="Driver"/></Column>
+                            <Column><Text text="Status"/></Column>
+                            <Column><Text text="Location"/></Column>
+                            <Column><Text text="Speed"/></Column>
+                            <Column><Text text="Fuel"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <ObjectIdentifier title="{fleet>id}" text="{fleet>lastUpdate}"/>
+                                    <Text text="{fleet>driver}"/>
+                                    <ObjectStatus text="{fleet>status}" state="{
+                                        path: 'fleet>status',
+                                        formatter: '.formatter.statusText'
+                                    }"/>
+                                    <Text text="{fleet>location}"/>
+                                    <Text text="{fleet>speed}"/>
+                                    <ProgressIndicator percentValue="{fleet>fuelLevel}" displayValue="{fleet>fuelLevel}%" showValue="true" width="7rem" state="{
+                                        path: 'fleet>fuelLevel',
+                                        formatter: '.formatter.fuelState'
+                                    }"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

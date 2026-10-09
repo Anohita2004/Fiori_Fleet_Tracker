@@ -1,0 +1,104 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "fleetTracker",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "rootView": {
+      "viewName": "fleetTracker.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css?v=2"
+        }
+      ]
+    },
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.f": {},
+        "sap.tnt": {},
+        "sap.suite.ui.microchart": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "fleetTracker.i18n.i18n"
+        }
+      },
+      "fleet": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {
+          "defaultBindingMode": "TwoWay"
+        },
+        "uri": "model/vehicles.json"
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "fleetTracker.view",
+        "controlAggregation": "pages",
+        "controlId": "appContainer",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        { "name": "Home", "pattern": "", "target": ["TargetHome"] },
+        { "name": "TruckTracking", "pattern": "tracking", "target": ["TargetTruckTracking"] },
+        { "name": "VehicleDetail", "pattern": "vehicle", "target": ["TargetVehicleDetail"] },
+        { "name": "LiveLocation", "pattern": "location", "target": ["TargetLiveLocation"] },
+        { "name": "DriverCreation", "pattern": "driver", "target": ["TargetDriverCreation"] },
+        { "name": "TruckAllocation", "pattern": "allocation", "target": ["TargetTruckAllocation"] },
+        { "name": "OperationsSupport", "pattern": "operations", "target": ["TargetOperationsSupport"] }
+      ],
+      "targets": {
+        "TargetHome": { "viewType": "XML", "transition": "slide", "viewId": "Home", "viewName": "Home" },
+        "TargetTruckTracking": { "viewType": "XML", "transition": "slide", "viewId": "TruckTracking", "viewName": "TruckTracking" },
+        "TargetVehicleDetail": { "viewType": "XML", "transition": "slide", "viewId": "VehicleDetail", "viewName": "VehicleDetail" },
+        "TargetLiveLocation": { "viewType": "XML", "transition": "slide", "viewId": "LiveLocation", "viewName": "LiveLocation" },
+        "TargetDriverCreation": { "viewType": "XML", "transition": "slide", "viewId": "DriverCreation", "viewName": "DriverCreation" },
+        "TargetTruckAllocation": { "viewType": "XML", "transition": "slide", "viewId": "TruckAllocation", "viewName": "TruckAllocation" },
+        "TargetOperationsSupport": { "viewType": "XML", "transition": "slide", "viewId": "OperationsSupport", "viewName": "OperationsSupport" }
+      }
+    }
+  }
+}

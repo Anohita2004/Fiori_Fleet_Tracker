@@ -1,0 +1,174 @@
+<mvc:View
+    controllerName="fleetTracker.controller.OperationsSupport"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
+        <content>
+            <VBox class="opsPage" width="100%" height="100%" style="min-height: 100vh; padding: 2rem;">
+                
+                <!-- Header -->
+                <HBox alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap" class="sapUiMediumMarginBottom">
+                    <VBox>
+                        <Title text="Track Operations Support" level="H1" style="font-size: 2.2rem; font-weight: bold; color: #2b2230;"/>
+                        <Text text="Track every load from warehouse to last-mile delivery" class="fleetSubtitle" style="color: #666;"/>
+                    </VBox>
+                    <HBox alignItems="Center" class="fleetFormCard" style="padding: 0.5rem; border-radius: 2rem;">
+                        <core:Icon src="sap-icon://search" class="sapUiSmallMarginBegin sapUiSmallMarginEnd"/>
+                        <Input placeholder="Search shipments" width="12rem" style="border:none; background:transparent;"/>
+                        <ComboBox selectedKey="V" width="12rem" style="background: #ff5722; color: white; border-radius: 1rem;">
+                            <core:Item key="V" text="Volvo FH 500"/>
+                            <core:Item key="H" text="Hino 300 Series"/>
+                            <core:Item key="D" text="DAF LF 230"/>
+                        </ComboBox>
+                    </HBox>
+                </HBox>
+
+                <!-- Hero Section (Truck Image with Overlay) -->
+                <VBox class="opsTruckContainer sapUiLargeMarginBottom">
+                    <Image src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" height="400px" style="object-fit: cover; border-radius: 1rem; width: 100%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));"/>
+                    <VBox class="opsCargoOverlay">
+                        <VBox><Text text="Food &amp; water" class="fleetSubtitle"/><Title text="4,800 kg" level="H4"/></VBox>
+                        <VBox><Text text="Medical supplies" class="fleetSubtitle"/><Title text="2,200 kg" level="H4"/></VBox>
+                        <VBox><Text text="Shelter kits" class="fleetSubtitle"/><Title text="5,400 kg" level="H4"/></VBox>
+                        <VBox><Text text="Clothing &amp; blankets" class="fleetSubtitle"/><Title text="1,500 kg" level="H4"/></VBox>
+                        <VBox><Text text="Mixed relief" class="fleetSubtitle"/><Title text="6,100 kg" level="H4"/></VBox>
+                        <VBox><Text text="Sanitation" class="fleetSubtitle"/><Title text="1,800 kg" level="H4"/></VBox>
+                    </VBox>
+                </VBox>
+
+                <!-- Filters -->
+                <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiMediumMarginBottom">
+                    <SegmentedButton selectedKey="primary" class="opsSegmented">
+                        <items>
+                            <SegmentedButtonItem text="Primary" key="primary"/>
+                            <SegmentedButtonItem text="Urgent" key="urgent"/>
+                            <SegmentedButtonItem text="Standby" key="standby"/>
+                        </items>
+                    </SegmentedButton>
+
+                    <SegmentedButton selectedKey="A" class="opsSegmented">
+                        <items>
+                            <SegmentedButtonItem text="Zone A - 65%" key="A"/>
+                            <SegmentedButtonItem text="Zone B" key="B"/>
+                            <SegmentedButtonItem text="Zone C" key="C"/>
+                        </items>
+                    </SegmentedButton>
+
+                    <HBox alignItems="Center">
+                        <SegmentedButton selectedKey="side" class="opsSegmented sapUiSmallMarginRight">
+                            <items>
+                                <SegmentedButtonItem text="Side" key="side"/>
+                                <SegmentedButtonItem text="Top" key="top"/>
+                            </items>
+                        </SegmentedButton>
+                        <SegmentedButton class="opsSegmented">
+                            <items>
+                                <SegmentedButtonItem text="-" key="minus"/>
+                                <SegmentedButtonItem text="+" key="plus"/>
+                            </items>
+                        </SegmentedButton>
+                    </HBox>
+                </HBox>
+
+                <!-- Cargo Details Horizontal Cards -->
+                <ScrollContainer horizontal="true" vertical="false" width="100%" class="sapUiLargeMarginBottom" style="padding-bottom: 1rem;">
+                    <HBox wrap="NoWrap">
+                        <VBox class="opsCargoCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom"><Title text="Food &amp; water" level="H5"/><Text text="primary" class="opsPillPrimary"/></HBox>
+                            <Title text="4,800 kg" level="H3" class="sapUiTinyMarginBottom"/>
+                            <Text text="240 x 120 x 110 cm" class="fleetSubtitle"/>
+                        </VBox>
+                        <VBox class="opsCargoCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom"><Title text="Medical supplies" level="H5"/><Text text="primary" class="opsPillPrimary"/></HBox>
+                            <Title text="2,200 kg" level="H3" class="sapUiTinyMarginBottom"/>
+                            <Text text="180 x 100 x 90 cm" class="fleetSubtitle"/>
+                        </VBox>
+                        <VBox class="opsCargoCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom"><VBox><Title text="Clothing &amp;" level="H5"/><Title text="blankets" level="H5"/></VBox><Text text="primary" class="opsPillPrimary"/></HBox>
+                            <Title text="1,500 kg" level="H3" class="sapUiTinyMarginBottom"/>
+                            <Text text="200 x 110 x 95 cm" class="fleetSubtitle"/>
+                        </VBox>
+                        <VBox class="opsCargoCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom"><Title text="Mixed relief" level="H5"/><Text text="primary" class="opsPillPrimary"/></HBox>
+                            <Title text="6,100 kg" level="H3" class="sapUiTinyMarginBottom"/>
+                            <Text text="300 x 120 x 130 cm" class="fleetSubtitle"/>
+                        </VBox>
+                        <VBox class="opsCargoCard">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom"><Title text="Shelter kits" level="H5"/><Text text="primary" class="opsPillPrimary"/></HBox>
+                            <Title text="5,400 kg" level="H3" class="sapUiTinyMarginBottom"/>
+                            <Text text="380 x 120 x 140 cm" class="fleetSubtitle"/>
+                        </VBox>
+                    </HBox>
+                </ScrollContainer>
+
+                <!-- Bottom Dashboards Grid -->
+                <layout:Grid defaultSpan="L4 M12 S12" class="sapUiNoMargin" hSpacing="1">
+                    
+                    <!-- Route Map -->
+                    <VBox class="fleetFormCard" style="background: rgba(255,255,255,0.85);">
+                        <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Title text="Route Map Tracking" level="H5"/><Text text="In-Transit" class="opsPillDark"/></HBox>
+                        <Text text="Albania → Norway" class="fleetSubtitle sapUiMediumMarginBottom"/>
+                        <Image src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;w=400&amp;q=80" width="100%" height="150px" style="object-fit: cover; border-radius: 1rem;"/>
+                    </VBox>
+
+                    <!-- Operation Details & Fuel -->
+                    <VBox>
+                        <layoutData><layout:GridData span="L4 M12 S12"/></layoutData>
+                        <layout:Grid defaultSpan="L6 M6 S12" hSpacing="1" vSpacing="1">
+                            <VBox class="fleetFormCard" style="background: rgba(255,255,255,0.85);">
+                                <Title text="Operation details" level="H5" class="sapUiMediumMarginBottom"/>
+                                <Text text="Logistic ID" class="fleetSubtitle"/>
+                                <Title text="VDC-222987" level="H6" class="sapUiSmallMarginBottom"/>
+                                <Text text="Distance" class="fleetSubtitle"/>
+                                <Title text="2680 mile" level="H6" class="sapUiSmallMarginBottom"/>
+                                <Text text="Delivery Estimation" class="fleetSubtitle"/>
+                                <Title text="6h 40 min" level="H6" class="sapUiSmallMarginBottom"/>
+                                <Text text="Item type" class="fleetSubtitle"/>
+                                <Title text="Humanitarian aid" level="H6"/>
+                            </VBox>
+                            <VBox>
+                                <VBox class="fleetFormCard sapUiSmallMarginBottom" style="background: rgba(255,255,255,0.85);">
+                                    <Title text="Fuel estimation" level="H6" class="sapUiSmallMarginBottom"/>
+                                    <HBox width="100%" height="1rem" class="sapUiSmallMarginBottom">
+                                        <VBox width="70%" height="100%" style="background:#5c47ff; border-radius:4px;"/>
+                                        <VBox width="30%" height="100%" style="background:#e0e0e0; border-radius:4px;"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween"><Title text="7.8 MPG" level="H6"/><Text text="Economic" class="fleetSubtitle"/></HBox>
+                                </VBox>
+                                <VBox class="fleetFormCard" style="background: rgba(255,255,255,0.85);">
+                                    <Title text="Average speed" level="H6" class="sapUiSmallMarginBottom"/>
+                                    <HBox width="100%" height="1rem" class="sapUiSmallMarginBottom">
+                                        <VBox width="60%" height="100%" style="background:#159b68; border-radius:4px; margin-right:4px;"/>
+                                        <VBox width="40%" height="100%" style="background:#e0e0e0; border-radius:4px;"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween"><Title text="60 - 80 km/h" level="H6"/><Text text="Standard" class="fleetSubtitle"/></HBox>
+                                </VBox>
+                            </VBox>
+                        </layout:Grid>
+                    </VBox>
+
+                    <!-- Camera Feed -->
+                    <VBox class="fleetFormCard" style="background: linear-gradient(180deg, #3a3b3d 0%, #1a1a1c 100%); border:none; padding:1.5rem; justify-content:space-between; height: 100%;">
+                        <HBox justifyContent="SpaceBetween">
+                            <HBox alignItems="Center"><Text text="Camera" style="color:white; font-weight:bold; text-shadow: 1px 1px 3px black;"/><Text text="Live" style="background: #ff5722; color: white; border-radius: 1rem; padding: 2px 8px; font-size: 0.7rem; margin-left: 0.5rem; font-weight:bold;"/></HBox>
+                            <core:Icon src="sap-icon://full-screen" color="white"/>
+                        </HBox>
+                        <VBox height="80px"></VBox>
+                        <VBox>
+                            <Title text="Container space" level="H5" style="color:white; text-shadow: 1px 1px 3px black;"/>
+                            <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginTop">
+                                <Text text="23/04/2026 - 10:32:40" style="color:white; text-shadow: 1px 1px 3px black; font-size:0.7rem;"/>
+                                <Text text="4K (3840 x 2160)" style="color:white; text-shadow: 1px 1px 3px black; font-size:0.7rem;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+
+                </layout:Grid>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
