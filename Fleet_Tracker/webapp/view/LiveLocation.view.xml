@@ -3,21 +3,38 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
+
     <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
         <content>
-            <VBox class="fleetPage" width="100%" height="100%" style="min-height: 100vh;">
-                
-                <HBox class="sapUiMediumMarginBottom" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+            <VBox class="opsPage" width="100%">
+
+                <!-- Header -->
+                <HBox class="opsHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
                     <VBox>
-                        <Title text="Live Location" level="H1" class="fleetTitle" style="font-size: 2rem;"/>
-                        <Text text="Real-time interactive map view of your active fleet" class="fleetSubtitle"/>
+                        <Title text="Live Location" level="H1" class="opsTitle"/>
+                        <Text text="Real-time interactive map view of your active fleet" class="opsSubtitle"/>
                     </VBox>
-                    <Button text="Refresh Map" icon="sap-icon://refresh" press=".onRefreshMap" type="Emphasized" style="background:#7956cf; border-color:#7956cf; color:white;"/>
+
+                    <HBox alignItems="Center" class="allocStats">
+                        <VBox class="allocStat">
+                            <Text text="Vehicles on map" class="opsTileLabel"/>
+                            <Title text="{= ${fleet>/vehicles}.length }" level="H3"/>
+                        </VBox>
+                        <Button text="Refresh map" icon="sap-icon://refresh" press=".onRefreshMap" type="Emphasized" class="fleetBtn liveRefresh"/>
+                    </HBox>
                 </HBox>
 
-                <VBox class="fleetFormCard" fitContainer="true" height="100%" style="padding:0;">
-                    <!-- The map container is rendered here -->
-                    <core:HTML content='&lt;div id=&quot;fleetMapContainer&quot; style=&quot;width:100%; height:600px; border-radius: 1rem; z-index: 1;&quot;&gt;&lt;/div&gt;' />
+                <!-- Map card -->
+                <VBox class="opsPanel liveMapCard">
+
+                    <!-- Floating status chip -->
+                    <HBox alignItems="Center" class="liveChip">
+                        <core:HTML content="&lt;span class=&quot;liveDot&quot;&gt;&lt;/span&gt;"/>
+                        <Text text="Live"/>
+                    </HBox>
+
+                    <!-- The map container is rendered here. Keep the id: the controller uses it. -->
+                    <core:HTML content="&lt;div id=&quot;fleetMapContainer&quot; class=&quot;liveMap&quot;&gt;&lt;/div&gt;"/>
                 </VBox>
 
             </VBox>
