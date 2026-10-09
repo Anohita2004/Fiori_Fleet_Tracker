@@ -787,3 +787,140 @@
 @media (prefers-reduced-motion: reduce) {
     .liveDot { animation: none; }
 }
+
+/* ==========================================================================
+   Home dashboard
+   ========================================================================== */
+.homeLivePill {
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--fleet-edge);
+    border-radius: 2rem;
+    background: var(--ops-card);
+    box-shadow: var(--fleet-shadow-sm);
+    font-weight: 600;
+}
+
+.homeKpiValue {
+    font-size: 2.1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    color: var(--fleet-ink) !important;
+}
+
+/* ---------- Vehicle slider ---------- */
+.vcPanel { margin-bottom: 1.5rem; overflow: hidden; }
+
+.vcViewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.vcTrack {
+    width: max-content;
+    animation: vcScroll 45s linear infinite;
+    will-change: transform;
+}
+
+.vcViewport:hover .vcTrack { animation-play-state: paused; }
+
+@keyframes vcScroll {
+    to { transform: translateX(-50%); }
+}
+
+.vcHalf { flex: 0 0 auto; min-width: min(1400px, 100vw); }
+
+.vcCard {
+    width: 17rem;
+    margin: 0.5rem 1rem 0.75rem 0;
+    padding: 0.75rem 0.75rem 1rem;
+    box-sizing: border-box;
+    border: 1px solid var(--fleet-edge);
+    border-radius: var(--fleet-radius-md);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: var(--fleet-shadow-sm);
+    transition: transform 0.25s var(--fleet-ease), box-shadow 0.25s var(--fleet-ease);
+}
+
+.vcCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--fleet-shadow-md);
+}
+
+.vcImage {
+    object-fit: cover;
+    border-radius: 0.8rem;
+    background: var(--fleet-violet-tint);
+}
+
+.vcRow { margin: 0.7rem 0 0.2rem; }
+.vcPin { color: var(--fleet-violet) !important; margin-right: 0.4rem; font-size: 0.9rem; }
+
+/* Road, progress fill and the truck that drives along it */
+.vcRoad {
+    position: relative;
+    height: 6px;
+    margin: 1.6rem 0.25rem 0.1rem;
+    border-radius: 3px;
+    background: #e9e3f7;
+}
+
+.vcFill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #a98bff, var(--fleet-violet));
+    animation: vcFill 7s ease-in-out infinite;
+}
+
+.vcTruck {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    color: var(--fleet-violet-deep);
+    animation: vcTruck 7s ease-in-out infinite;
+}
+
+@keyframes vcFill  { from { width: 0; } to { width: 100%; } }
+@keyframes vcTruck { from { left: 0; transform: translateX(0); } to { left: 100%; transform: translateX(-100%); } }
+
+/* Stagger so the trucks do not move in lockstep */
+.vcHalf > :nth-child(2n) .vcFill,
+.vcHalf > :nth-child(2n) .vcTruck { animation-delay: -2.3s; }
+.vcHalf > :nth-child(3n) .vcFill,
+.vcHalf > :nth-child(3n) .vcTruck { animation-delay: -4.6s; }
+
+/* ---------- Status breakdown ---------- */
+.homeLower { gap: 1.25rem; }
+.homeStatus { flex: 3 1 22rem; }
+.homeUtil   { flex: 2 1 14rem; }
+
+.homeSplitBar { height: 0.9rem; gap: 3px; }
+.homeSeg { height: 100%; border-radius: 4px; transition: width 0.6s var(--fleet-ease); }
+.homeSegGreen  { background: var(--fleet-green); }
+.homeSegOrange { background: var(--fleet-orange); }
+.homeSegRed    { background: var(--fleet-red); }
+
+.homeLegendRow { padding: 0.45rem 0; border-bottom: 1px solid #efe9fb; }
+
+.homeUtilValue {
+    font-size: 3.4rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em;
+    color: var(--fleet-violet-deep) !important;
+    line-height: 1.1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vcTrack { animation: none; width: auto; overflow-x: auto; }
+    .vcViewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+    .vcHalf + .vcHalf { display: none; }
+    .vcFill { animation: none; width: 60%; }
+    .vcTruck { animation: none; left: 60%; transform: translateX(-100%); }
+    .vcCard, .homeSeg { transition: none; }
+    .vcCard:hover { transform: none; }
+}

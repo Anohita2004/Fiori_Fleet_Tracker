@@ -6,80 +6,141 @@
 
     <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
         <content>
-            <VBox class="fleetPage" width="100%">
+            <VBox class="opsPage" width="100%">
 
                 <!-- Dashboard heading -->
-                <HBox
-                    class="fleetHeader"
-                    alignItems="Center"
-                    justifyContent="SpaceBetween"
-                    wrap="Wrap">
-
+                <HBox class="opsHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
                     <VBox>
-                        <Title
-                            text="Fleet Overview"
-                            level="H1"
-                            class="fleetTitle"/>
-                        <Text
-                            text="Monitor your vehicles in real time"
-                            class="fleetSubtitle"/>
+                        <Title text="Fleet Overview" level="H1" class="opsTitle"/>
+                        <Text text="Monitor your vehicles in real time" class="opsSubtitle"/>
+                    </VBox>
+                    <HBox alignItems="Center" class="homeLivePill">
+                        <core:HTML content="&lt;span class='liveDot'&gt;&lt;/span&gt;"/>
+                        <Text text="Live fleet"/>
+                    </HBox>
+                </HBox>
+
+                <!-- KPI cards (same bindings as before) -->
+                <HBox class="fleetKpiRow" wrap="Wrap" alignItems="Stretch">
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://shipping-status" class="fleetKpiIcon"/>
+                            <Text text="Total vehicles" class="opsTileLabel"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/totalVehicles}" level="H2" class="homeKpiValue"/>
+                        <Text text="Registered fleet" class="opsSubtitle"/>
+                    </VBox>
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://accept" class="fleetKpiIcon fleetGreen"/>
+                            <Text text="Active vehicles" class="opsTileLabel"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/active}" level="H2" class="homeKpiValue"/>
+                        <Text text="Currently active" class="opsSubtitle"/>
+                    </VBox>
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://wrench" class="fleetKpiIcon fleetOrange"/>
+                            <Text text="Maintenance" class="opsTileLabel"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/inMaintenance}" level="H2" class="homeKpiValue"/>
+                        <Text text="Under maintenance" class="opsSubtitle"/>
+                    </VBox>
+
+                    <VBox class="fleetKpiCard">
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://alert" class="fleetKpiIcon fleetRed"/>
+                            <Text text="Inactive vehicles" class="opsTileLabel"/>
+                        </HBox>
+                        <Title text="{fleet>/metrics/inactive}" level="H2" class="homeKpiValue"/>
+                        <Text text="Require attention" class="opsSubtitle"/>
                     </VBox>
                 </HBox>
 
-                <!-- KPI cards -->
-                <HBox
-                    class="fleetKpiRow"
-                    wrap="Wrap"
-                    alignItems="Stretch">
+                <!-- Vehicle slider: cards glide across, each truck drives along its own road -->
+                <VBox class="opsPanel vcPanel">
+                    <HBox justifyContent="SpaceBetween" alignItems="Center" wrap="Wrap" class="opsCardTop">
+                        <VBox>
+                            <Title text="Vehicles on the road" level="H3"/>
+                            <Text text="Hover over the slider to pause it" class="opsSubtitle"/>
+                        </VBox>
+                    </HBox>
 
-                    <VBox class="fleetKpiCard">
-                        <HBox alignItems="Center">
-                            <core:Icon
-                                src="sap-icon://shipping-status"
-                                class="fleetKpiIcon"/>
-                            <Text text="Total Vehicles"/>
+                    <HBox class="vcViewport">
+                        <HBox class="vcTrack">
+
+                            <HBox items="{fleet>/vehicles}" class="vcHalf">
+                                <VBox class="vcCard">
+                                    <Image src="{fleet>imageUrl}" alt="{fleet>id}" width="100%" height="130px" densityAware="false" class="vcImage"/>
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="vcRow">
+                                        <Title text="{fleet>id}" level="H5"/>
+                                        <Text text="{fleet>driver}" class="opsSubtitle"/>
+                                    </HBox>
+                                    <HBox alignItems="Center">
+                                        <core:Icon src="sap-icon://map-2" class="vcPin"/>
+                                        <Text text="{fleet>location}" class="opsSubtitle"/>
+                                    </HBox>
+                                    <core:HTML content="&lt;div class='vcRoad'&gt;&lt;span class='vcFill'&gt;&lt;/span&gt;&lt;span class='vcTruck'&gt;&lt;svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'&gt;&lt;path d='M3 6h11v9H3z'/&gt;&lt;path d='M14 9h4l3 3v3h-7z'/&gt;&lt;circle cx='7' cy='17' r='1.8'/&gt;&lt;circle cx='17' cy='17' r='1.8'/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/div&gt;"/>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Second copy makes the loop seamless -->
+                            <HBox items="{fleet>/vehicles}" class="vcHalf">
+                                <VBox class="vcCard">
+                                    <Image src="{fleet>imageUrl}" alt="{fleet>id}" width="100%" height="130px" densityAware="false" class="vcImage"/>
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="vcRow">
+                                        <Title text="{fleet>id}" level="H5"/>
+                                        <Text text="{fleet>driver}" class="opsSubtitle"/>
+                                    </HBox>
+                                    <HBox alignItems="Center">
+                                        <core:Icon src="sap-icon://map-2" class="vcPin"/>
+                                        <Text text="{fleet>location}" class="opsSubtitle"/>
+                                    </HBox>
+                                    <core:HTML content="&lt;div class='vcRoad'&gt;&lt;span class='vcFill'&gt;&lt;/span&gt;&lt;span class='vcTruck'&gt;&lt;svg viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'&gt;&lt;path d='M3 6h11v9H3z'/&gt;&lt;path d='M14 9h4l3 3v3h-7z'/&gt;&lt;circle cx='7' cy='17' r='1.8'/&gt;&lt;circle cx='17' cy='17' r='1.8'/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/div&gt;"/>
+                                </VBox>
+                            </HBox>
+
                         </HBox>
-                        <Title text="{fleet>/metrics/totalVehicles}"
-                               level="H2"/>
-                        <Text text="Registered fleet"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Fleet status breakdown -->
+                <HBox class="homeLower" wrap="Wrap" alignItems="Stretch">
+
+                    <VBox class="opsPanel homeStatus">
+                        <Title text="Fleet status" level="H3" class="opsCardGap"/>
+
+                        <HBox width="100%" class="homeSplitBar opsCardGap">
+                            <VBox class="homeSeg homeSegGreen" width="{= ${fleet>/metrics/totalVehicles} ? Math.round(100 * ${fleet>/metrics/active} / ${fleet>/metrics/totalVehicles}) + '%' : '0%' }"/>
+                            <VBox class="homeSeg homeSegOrange" width="{= ${fleet>/metrics/totalVehicles} ? Math.round(100 * ${fleet>/metrics/inMaintenance} / ${fleet>/metrics/totalVehicles}) + '%' : '0%' }"/>
+                            <VBox class="homeSeg homeSegRed" width="{= ${fleet>/metrics/totalVehicles} ? Math.round(100 * ${fleet>/metrics/inactive} / ${fleet>/metrics/totalVehicles}) + '%' : '0%' }"/>
+                        </HBox>
+
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="homeLegendRow">
+                            <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#12905f" class="sapUiTinyMarginEnd"/><Text text="Active" class="opsSubtitle"/></HBox>
+                            <Title text="{fleet>/metrics/active}" level="H6"/>
+                        </HBox>
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="homeLegendRow">
+                            <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#d17a14" class="sapUiTinyMarginEnd"/><Text text="In maintenance" class="opsSubtitle"/></HBox>
+                            <Title text="{fleet>/metrics/inMaintenance}" level="H6"/>
+                        </HBox>
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="homeLegendRow">
+                            <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#d63f5c" class="sapUiTinyMarginEnd"/><Text text="Inactive" class="opsSubtitle"/></HBox>
+                            <Title text="{fleet>/metrics/inactive}" level="H6"/>
+                        </HBox>
                     </VBox>
 
-                    <VBox class="fleetKpiCard">
-                        <HBox alignItems="Center">
-                            <core:Icon
-                                src="sap-icon://accept"
-                                class="fleetKpiIcon fleetGreen"/>
-                            <Text text="Active Vehicles"/>
-                        </HBox>
-                        <Title text="{fleet>/metrics/active}"
-                               level="H2"/>
-                        <Text text="Currently active"/>
+                    <VBox class="opsPanel homeUtil" justifyContent="Center">
+                        <Text text="Fleet utilization" class="opsTileLabel"/>
+                        <Title text="{= ${fleet>/metrics/totalVehicles} ? Math.round(100 * ${fleet>/metrics/active} / ${fleet>/metrics/totalVehicles}) + '%' : '0%' }" level="H1" class="homeUtilValue"/>
+                        <Text text="of registered vehicles are active right now" class="opsSubtitle"/>
                     </VBox>
 
-                    <VBox class="fleetKpiCard">
-                        <HBox alignItems="Center">
-                            <core:Icon
-                                src="sap-icon://wrench"
-                                class="fleetKpiIcon fleetOrange"/>
-                            <Text text="Maintenance"/>
-                        </HBox>
-                        <Title text="{fleet>/metrics/inMaintenance}"
-                               level="H2"/>
-                        <Text text="Under maintenance"/>
-                    </VBox>
-
-                    <VBox class="fleetKpiCard">
-                        <HBox alignItems="Center">
-                            <core:Icon
-                                src="sap-icon://alert"
-                                class="fleetKpiIcon fleetRed"/>
-                            <Text text="Inactive Vehicles"/>
-                        </HBox>
-                        <Title text="{fleet>/metrics/inactive}"
-                               level="H2"/>
-                        <Text text="Require attention"/>
-                    </VBox>
                 </HBox>
+
             </VBox>
         </content>
     </Page>
