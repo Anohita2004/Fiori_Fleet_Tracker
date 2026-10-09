@@ -24,8 +24,8 @@
             <tnt:SideNavigation id="sideNavigation" selectedKey="Home" itemSelect=".onItemSelect">
                 <tnt:NavigationList>
                     <tnt:NavigationListItem text="Dashboard" icon="sap-icon://bov" key="Home" />
-                    <tnt:NavigationListItem text="Truck Tracking" icon="sap-icon://shipping-status" key="TruckTracking" />
-                    <tnt:NavigationListItem text="Vehicle Details" icon="sap-icon://car" key="VehicleDetail" />
+                    <tnt:NavigationListItem text="Truck Tracking" icon="sap-icon://employee" key="TruckTracking" />
+                    <tnt:NavigationListItem text="Vehicle Details" icon="sap-icon://employee" key="VehicleDetail" />
                     <tnt:NavigationListItem text="Live Location" icon="sap-icon://map-2" key="LiveLocation" />
                     <tnt:NavigationListItem text="Driver Creation" icon="sap-icon://employee" key="DriverCreation" />
                     <tnt:NavigationListItem text="Truck Allocation" icon="sap-icon://user-edit" key="TruckAllocation" />

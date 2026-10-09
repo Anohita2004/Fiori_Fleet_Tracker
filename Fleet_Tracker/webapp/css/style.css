@@ -545,3 +545,173 @@
     .opsCargoCard { transition: none; }
     .opsCargoCard:hover { transform: none; }
 }
+
+/* ==========================================================================
+   Truck allocation view
+   ========================================================================== */
+.fleetAllocLayout { gap: 1.25rem; }
+
+.fleetAllocMain { flex: 2 1 26rem; }
+.fleetAllocSide { flex: 1 1 16rem; }
+
+.fleetAllocIntro { margin: 0.35rem 0 1rem; }
+.fleetAllocActions { margin-top: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--fleet-line); }
+
+.fleetVehicleRow {
+    gap: 0.75rem;
+    padding: 0.7rem 0.85rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--fleet-line);
+    border-radius: var(--fleet-radius-sm);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Keep the roster list background transparent so the card shows through */
+.fleetAllocSide .sapMList,
+.fleetAllocSide .sapMLIB {
+    background: transparent;
+}
+
+/* ==========================================================================
+   Truck allocation view
+   ========================================================================== */
+.allocStats { gap: 0.75rem; }
+
+.allocStat {
+    min-width: 8rem;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid var(--fleet-edge);
+    border-radius: var(--fleet-radius-md);
+    background: var(--ops-card);
+    box-shadow: var(--fleet-shadow-sm);
+}
+
+.allocLayout { gap: 1.5rem; }
+
+.allocFormCard { flex: 3 1 24rem; padding: 1.75rem; }
+.allocSide     { flex: 2 1 18rem; gap: 1.25rem; }
+
+.allocStepRow { gap: 1rem; margin-bottom: 1.4rem; align-items: flex-start; }
+
+.allocStepNum {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--ops-ink);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-top: 1.35rem;
+}
+
+.allocField { gap: 0.3rem; }
+
+.allocInput .sapMInputBaseContentWrapper {
+    border-radius: 0.75rem;
+    border-color: var(--fleet-line);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.allocInput .sapMInputBaseContentWrapper:hover,
+.allocInput.sapMInputBaseFocused .sapMInputBaseContentWrapper {
+    border-color: var(--fleet-violet);
+}
+
+.allocActions { margin-top: 0.5rem; }
+
+.allocTip { gap: 0.6rem; margin-bottom: 0.8rem; }
+.allocTip .fleetKpiIcon { margin-right: 0; margin-top: 0.1rem; }
+.allocTip .sapMText { color: var(--ops-muted); line-height: 1.45; }
+
+/* ==========================================================================
+   Driver creation view
+   (reuses opsPage, opsPanel, opsHeader and the allocInput field style)
+   ========================================================================== */
+.drvMain { gap: 1.5rem; }
+
+.drvFormCard { flex: 3 1 32rem; padding: 1.75rem; }
+.drvSide     { flex: 2 1 20rem; gap: 1.25rem; }
+
+.drvCardHead { gap: 0.9rem; margin-bottom: 1.1rem; }
+
+.drvIconChip {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.8rem;
+    background: var(--fleet-violet-tint);
+    color: var(--fleet-violet) !important;
+}
+
+.drvSectionHead {
+    gap: 0.6rem;
+    margin: 1.6rem 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--fleet-line);
+}
+
+.drvSectionIcon { color: var(--fleet-violet) !important; }
+
+/* Responsive two-column field grid */
+.drvFields { gap: 1rem 1.25rem; }
+
+.drvField {
+    flex: 1 1 calc(50% - 1.25rem);
+    min-width: 14rem;
+    gap: 0.3rem;
+}
+
+.drvActions {
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--fleet-line);
+}
+
+.drvGhostBtn {
+    border: 1px solid var(--fleet-line) !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+.drvTiny { font-size: 0.75rem; }
+
+/* Photo drop zone */
+.drvDropZone {
+    padding: 1.75rem 1rem;
+    gap: 0.2rem;
+    border: 2px dashed #c9bbf0;
+    border-radius: var(--fleet-radius-md);
+    background: rgba(243, 239, 255, 0.6);
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.drvDropZone:hover {
+    background: rgba(243, 239, 255, 0.95);
+    border-color: var(--fleet-violet);
+}
+
+.drvDropIcon { color: #a58ae8 !important; margin-bottom: 0.5rem; }
+
+.drvDocRow {
+    margin-top: 0.75rem;
+    padding: 0.7rem 1rem;
+    gap: 0.75rem;
+    border: 1px solid var(--fleet-line);
+    border-radius: var(--fleet-radius-sm);
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.drvDocRow .drvSectionIcon { margin-right: 0.75rem; }
+
+.drvTable .sapMListTblHeaderCell { background: var(--fleet-violet-tint); }
+
+@media (prefers-reduced-motion: reduce) {
+    .drvDropZone { transition: none; }
+}

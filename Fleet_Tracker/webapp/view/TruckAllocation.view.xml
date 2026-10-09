@@ -1,51 +1,108 @@
 <mvc:View
     controllerName="fleetTracker.controller.TruckAllocation"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:form="sap.ui.layout.form"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
     <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
         <content>
-            <VBox class="fleetPage" width="100%">
+            <VBox class="opsPage" width="100%">
 
-                <HBox class="fleetHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+                <!-- Header -->
+                <HBox class="opsHeader" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
                     <VBox>
-                        <Title text="Truck Allocation" level="H1" class="fleetTitle"/>
-                        <Text text="Assign drivers to specific vehicles" class="fleetSubtitle"/>
+                        <Title text="Truck Allocation" level="H1" class="opsTitle"/>
+                        <Text text="Assign drivers to specific vehicles" class="opsSubtitle"/>
                     </VBox>
+
+                    <HBox class="allocStats" alignItems="Center">
+                        <VBox class="allocStat">
+                            <Text text="Trucks in fleet" class="opsTileLabel"/>
+                            <Title text="{= ${fleet>/vehicles}.length }" level="H3"/>
+                        </VBox>
+                        <VBox class="allocStat">
+                            <Text text="Drivers available" class="opsTileLabel"/>
+                            <Title text="3" level="H3"/>
+                        </VBox>
+                    </HBox>
                 </HBox>
 
-                <VBox class="fleetFormCard">
-                    <form:SimpleForm id="allocationForm"
-                        editable="true"
-                        layout="ResponsiveGridLayout"
-                        labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
-                        adjustLabelSpan="false"
-                        emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
-                        columnsXL="1" columnsL="1" columnsM="1"
-                        singleContainerFullSize="false">
-                        <form:content>
-                            <Label text="Select Driver" required="true" />
-                            <ComboBox id="driverSelect" placeholder="Choose a driver">
-                                <core:Item xmlns:core="sap.ui.core" key="D1" text="John Doe" />
-                                <core:Item xmlns:core="sap.ui.core" key="D2" text="Jane Smith" />
-                                <core:Item xmlns:core="sap.ui.core" key="D3" text="Mike Johnson" />
-                            </ComboBox>
+                <HBox class="allocLayout" wrap="Wrap" alignItems="Start">
 
-                            <Label text="Select Truck" required="true" />
-                            <ComboBox id="truckSelect" placeholder="Choose a truck"
-                                items="{fleet>/vehicles}">
-                                <core:Item xmlns:core="sap.ui.core" key="{fleet>id}" text="{fleet>id} - {fleet>location}" />
-                            </ComboBox>
-                            
-                            <Label text="Allocation Date" required="true" />
-                            <DatePicker id="allocDate" placeholder="Enter Date" />
-                        </form:content>
-                    </form:SimpleForm>
-                    <Toolbar style="Clear">
-                        <ToolbarSpacer/>
-                        <Button text="Allocate" type="Emphasized" press=".onAllocate" />
-                    </Toolbar>
-                </VBox>
+                    <!-- Allocation form -->
+                    <VBox class="opsPanel allocFormCard">
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="opsCardTop">
+                            <Title text="New allocation" level="H3"/>
+                            <Text text="3 steps" class="opsPillPrimary"/>
+                        </HBox>
+
+                        <!-- Step 1 -->
+                        <HBox class="allocStepRow">
+                            <Text text="1" class="allocStepNum"/>
+                            <VBox class="allocField" width="100%">
+                                <Label text="Select driver" required="true" labelFor="driverSelect"/>
+                                <ComboBox id="driverSelect" placeholder="Choose a driver" width="100%" class="allocInput">
+                                    <core:Item key="D1" text="John Doe"/>
+                                    <core:Item key="D2" text="Jane Smith"/>
+                                    <core:Item key="D3" text="Mike Johnson"/>
+                                </ComboBox>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Step 2 -->
+                        <HBox class="allocStepRow">
+                            <Text text="2" class="allocStepNum"/>
+                            <VBox class="allocField" width="100%">
+                                <Label text="Select truck" required="true" labelFor="truckSelect"/>
+                                <ComboBox id="truckSelect" placeholder="Choose a truck" width="100%" class="allocInput"
+                                    items="{fleet>/vehicles}">
+                                    <core:Item key="{fleet>id}" text="{fleet>id} - {fleet>location}"/>
+                                </ComboBox>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Step 3 -->
+                        <HBox class="allocStepRow">
+                            <Text text="3" class="allocStepNum"/>
+                            <VBox class="allocField" width="100%">
+                                <Label text="Allocation date" required="true" labelFor="allocDate"/>
+                                <DatePicker id="allocDate" placeholder="Choose a date" width="100%" class="allocInput"/>
+                            </VBox>
+                        </HBox>
+
+                        <HBox justifyContent="End" class="allocActions">
+                            <Button text="Allocate" type="Emphasized" icon="sap-icon://shipping-status" class="fleetBtn" press=".onAllocate"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Side column -->
+                    <VBox class="allocSide">
+
+                        <Image
+                            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                            alt="Fleet truck on the road"
+                            width="100%"
+                            height="200px"
+                            class="opsHeroImage"/>
+
+                        <VBox class="opsPanel">
+                            <Title text="Before you allocate" level="H5" class="opsCardGap"/>
+                            <HBox class="allocTip" alignItems="Start">
+                                <core:Icon src="sap-icon://user-settings" class="fleetKpiIcon"/>
+                                <Text text="Confirm the driver is on shift for the chosen date."/>
+                            </HBox>
+                            <HBox class="allocTip" alignItems="Start">
+                                <core:Icon src="sap-icon://car" class="fleetKpiIcon"/>
+                                <Text text="Check the truck's tire pressure and battery health on its vehicle page."/>
+                            </HBox>
+                            <HBox class="allocTip" alignItems="Start">
+                                <core:Icon src="sap-icon://calendar" class="fleetKpiIcon"/>
+                                <Text text="Pick today or a future date so the route can be planned."/>
+                            </HBox>
+                        </VBox>
+
+                    </VBox>
+                </HBox>
 
             </VBox>
         </content>
