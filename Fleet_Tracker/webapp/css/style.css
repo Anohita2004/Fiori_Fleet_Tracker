@@ -1,103 +1,157 @@
-/* Main dashboard canvas */
-.fleetPage {
-    min-height: 100%;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    background:
-        radial-gradient(ellipse at 10% 0%,
-            rgba(193, 164, 255, 0.45), transparent 42%),
-        radial-gradient(ellipse at 100% 100%,
-            rgba(224, 205, 255, 0.55), transparent 40%),
-        linear-gradient(135deg, #f1edff, #f8f9ff 55%, #eee8ff);
+/* ==========================================================================
+   Fleet dashboard
+   Same class names as before, so no view or controller changes are needed.
+   ========================================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+    --fleet-ink: #251c3f;
+    --fleet-ink-soft: #6b6585;
+    --fleet-violet: #7050d0;
+    --fleet-violet-deep: #5a3cb5;
+    --fleet-violet-tint: #f3efff;
+    --fleet-line: #e4dcf8;
+
+    --fleet-green: #12905f;
+    --fleet-orange: #d17a14;
+    --fleet-red: #d63f5c;
+
+    --fleet-surface: rgba(255, 255, 255, 0.86);
+    --fleet-surface-strong: rgba(255, 255, 255, 0.94);
+    --fleet-edge: rgba(255, 255, 255, 0.95);
+
+    --fleet-radius-sm: 0.75rem;
+    --fleet-radius-md: 1.1rem;
+    --fleet-radius-lg: 1.5rem;
+
+    --fleet-shadow-sm: 0 1px 2px rgba(60, 44, 110, 0.06),
+                       0 6px 18px rgba(82, 65, 130, 0.08);
+    --fleet-shadow-md: 0 2px 4px rgba(60, 44, 110, 0.06),
+                       0 12px 32px rgba(82, 65, 130, 0.12);
+    --fleet-shadow-lg: 0 4px 8px rgba(60, 44, 110, 0.06),
+                       0 20px 48px rgba(82, 65, 130, 0.16);
+
+    --fleet-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* Header */
+/* ---------- Page canvas ---------- */
+.fleetPage {
+    min-height: 100%;
+    padding: 1.75rem;
+    box-sizing: border-box;
+    background:
+        radial-gradient(ellipse 60% 45% at 8% 0%,
+            rgba(190, 160, 255, 0.50), transparent 70%),
+        radial-gradient(ellipse 55% 45% at 100% 100%,
+            rgba(222, 200, 255, 0.60), transparent 70%),
+        radial-gradient(ellipse 35% 30% at 85% 8%,
+            rgba(170, 200, 255, 0.28), transparent 70%),
+        linear-gradient(135deg, #f1edff, #f8f9ff 55%, #eee8ff);
+    background-attachment: fixed;
+}
+
+/* ---------- Header ---------- */
 .fleetHeader {
-    padding: 0.5rem 0 1.5rem;
+    padding: 0.5rem 0 1.75rem;
     gap: 1rem;
 }
 
 .fleetTitle {
-    color: #292044 !important;
-    font-size: 1.8rem !important;
+    color: var(--fleet-ink) !important;
+    font-size: 2rem !important;
     font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
 
 .fleetSubtitle {
-    color: #77718f;
-    margin-top: 0.25rem;
+    color: var(--fleet-ink-soft);
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .fleetRefresh {
-    border-radius: 0.75rem;
+    border-radius: var(--fleet-radius-sm);
 }
 
-/* KPI cards */
+/* ---------- KPI cards ---------- */
 .fleetKpiRow {
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1.1rem;
+    margin-bottom: 1.75rem;
 }
 
 .fleetKpiCard {
+    position: relative;
     flex: 1 1 12rem;
     min-width: 10rem;
-    padding: 1.25rem;
+    padding: 1.35rem 1.4rem 1.25rem;
     box-sizing: border-box;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 1.1rem;
-    background: rgba(255, 255, 255, 0.82);
-    box-shadow: 0 8px 25px rgba(82, 65, 130, 0.09);
+    overflow: hidden;
+    border: 1px solid var(--fleet-edge);
+    border-radius: var(--fleet-radius-md);
+    background: var(--fleet-surface);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--fleet-shadow-sm);
     gap: 0.65rem;
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
+    transition: transform 0.25s var(--fleet-ease),
+                box-shadow 0.25s var(--fleet-ease);
+}
+
+/* Slim accent edge, the one signature detail of the dashboard */
+.fleetKpiCard::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, #9d7bff, var(--fleet-violet));
+    border-radius: 4px 0 0 4px;
 }
 
 .fleetKpiCard:hover {
     transform: translateY(-3px);
-    box-shadow: 0 13px 30px rgba(82, 65, 130, 0.15);
+    box-shadow: var(--fleet-shadow-md);
 }
 
 .fleetKpiIcon {
-    color: #7956cf;
-    font-size: 1.2rem;
+    color: var(--fleet-violet);
+    font-size: 1.25rem;
     margin-right: 0.5rem;
 }
 
-.fleetGreen {
-    color: #159b68;
-}
+.fleetGreen  { color: var(--fleet-green); }
+.fleetOrange { color: var(--fleet-orange); }
+.fleetRed    { color: var(--fleet-red); }
 
-.fleetOrange {
-    color: #d98724;
-}
-
-.fleetRed {
-    color: #df526d;
-}
-
-/* Main table card & Forms */
-.fleetTableCard, .fleetFormCard {
-    padding: 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    border-radius: 1.2rem;
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: 0 10px 32px rgba(82, 65, 130, 0.10);
+/* ---------- Table card and form card ---------- */
+.fleetTableCard,
+.fleetFormCard {
+    padding: 1.4rem;
+    border: 1px solid var(--fleet-edge);
+    border-radius: 1.25rem;
+    background: var(--fleet-surface-strong);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--fleet-shadow-md);
     overflow: hidden;
 }
 
 .fleetTableHeader {
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
 }
 
+/* ---------- Table ---------- */
 .fleetTable .sapMListTblHeaderCell {
-    background: #f3efff;
-    border-bottom: 1px solid #e6def9;
+    background: var(--fleet-violet-tint);
+    border-bottom: 1px solid var(--fleet-line);
 }
 
 .fleetTable .sapMListTblHeaderCell .sapMText {
-    color: #63567f;
+    color: #5d5078;
     font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
 .fleetTable .sapMListTblRow {
@@ -109,16 +163,385 @@
 }
 
 .fleetTable .sapMListTblCell {
-    padding-top: 0.9rem;
-    padding-bottom: 0.9rem;
+    padding-top: 0.95rem;
+    padding-bottom: 0.95rem;
+    border-bottom-color: #efe9fb;
 }
 
-.fleetShowcaseCard { padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.95); border-radius: 1.5rem; background: rgba(255, 255, 255, 0.9); box-shadow: 0 15px 40px rgba(82, 65, 130, 0.12); display: flex; flex-direction: column; justifyContent: space-between; } 
-.fleetBtn { border-radius: 1rem; }
+/* ---------- Showcase card ---------- */
+.fleetShowcaseCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* was "justifyContent", invalid in CSS */
+    padding: 2rem;
+    border: 1px solid var(--fleet-edge);
+    border-radius: var(--fleet-radius-lg);
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(246, 241, 255, 0.92));
+    box-shadow: var(--fleet-shadow-lg);
+}
 
-.fleetBorderedBox { border: 1px solid #e6def9; border-radius: 0.8rem; padding: 1rem; } 
-.fleetBatteryVisual { border: 2px solid #bbaee0; border-radius: 4px; position: relative; width: 40px; height: 80px; } 
-.fleetBatteryFill { background-color: #159b68; position: absolute; bottom: 0; width: 100%; border-radius: 2px; }
+/* ---------- Buttons ---------- */
+.fleetBtn {
+    border-radius: var(--fleet-radius-md);
+    transition: box-shadow 0.2s var(--fleet-ease),
+                transform 0.2s var(--fleet-ease);
+}
 
-.fleetBorderedBox { background: rgba(255, 255, 255, 0.4); } 
-.fleetTransparentTabBar .sapMITBHead { background-color: transparent !important; border-bottom: none !important; }
+.fleetBtn:hover {
+    box-shadow: 0 6px 16px rgba(112, 80, 208, 0.22);
+}
+
+.fleetBtn:active {
+    transform: translateY(1px);
+}
+
+/* ---------- Bordered box ---------- */
+.fleetBorderedBox {
+    padding: 1rem;
+    border: 1px solid var(--fleet-line);
+    border-radius: var(--fleet-radius-sm);
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- Battery visual ---------- */
+.fleetBatteryVisual {
+    position: relative;
+    width: 40px;
+    height: 80px;
+    border: 2px solid #b3a5de;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Battery terminal cap */
+.fleetBatteryVisual::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 16px;
+    height: 5px;
+    transform: translateX(-50%);
+    background: #b3a5de;
+    border-radius: 3px 3px 0 0;
+}
+
+.fleetBatteryFill {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(180deg, #2fbf8a, var(--fleet-green));
+    border-radius: 3px;
+    transition: height 0.4s var(--fleet-ease);
+}
+
+/* ---------- Tab bar ---------- */
+.fleetTransparentTabBar .sapMITBHead {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
+
+/* ---------- Keyboard focus ---------- */
+.fleetBtn:focus-visible,
+.fleetRefresh:focus-visible,
+.fleetTable .sapMListTblRow:focus-visible {
+    outline: 2px solid var(--fleet-violet);
+    outline-offset: 2px;
+}
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 600px) {
+    .fleetPage {
+        padding: 1rem;
+    }
+
+    .fleetTitle {
+        font-size: 1.5rem !important;
+    }
+
+    .fleetKpiCard {
+        flex-basis: 100%;
+    }
+
+    .fleetTableCard,
+    .fleetFormCard,
+    .fleetShowcaseCard {
+        padding: 1rem;
+    }
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .fleetKpiCard,
+    .fleetBtn,
+    .fleetBatteryFill,
+    .fleetTable .sapMListTblRow {
+        transition: none;
+    }
+
+    .fleetKpiCard:hover {
+        transform: none;
+    }
+}
+
+/* ---------- Vehicle detail view helpers ---------- */
+.fleetTopBar {
+    padding: 1rem 2rem;
+    gap: 1rem;
+}
+
+.fleetSmallText {
+    font-size: 0.8rem;
+}
+
+.fleetVehicleImage {
+    object-fit: contain;
+    border-radius: var(--fleet-radius-md);
+}
+
+.fleetTireLow {
+    font-weight: 700;
+}
+
+/* Let the three battery sub-cards wrap cleanly on narrow screens */
+@media (max-width: 1100px) {
+    .fleetBorderedBox {
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   Operations support view
+   ========================================================================== */
+:root {
+    --ops-orange: #ff5a2e;
+    --ops-orange-soft: #ffe7de;
+    --ops-ink: #2b2230;
+    --ops-muted: #7a7084;
+    --ops-pill: #b9a5f5;
+    --ops-card: rgba(255, 255, 255, 0.72);
+}
+
+.opsPage {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 2rem;
+    background:
+        radial-gradient(ellipse 55% 45% at 100% 0%, rgba(255, 190, 150, 0.60), transparent 70%),
+        radial-gradient(ellipse 55% 45% at 0% 100%, rgba(214, 196, 255, 0.55), transparent 70%),
+        linear-gradient(135deg, #fff3ec, #f8f4ff 55%, #fbe9e2);
+}
+
+/* ---------- Header ---------- */
+.opsHeader { margin-bottom: 1.5rem; gap: 1rem; }
+
+.opsTitle {
+    color: var(--ops-ink) !important;
+    font-size: 2.2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.opsSubtitle { color: var(--ops-muted); font-size: 0.9rem; }
+
+.opsToolbar {
+    padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+    border: 1px solid var(--fleet-edge);
+    border-radius: 2rem;
+    background: var(--ops-card);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--fleet-shadow-sm);
+}
+
+.opsToolbarIcon { color: var(--ops-muted); margin-right: 0.25rem; }
+
+.opsSearch .sapMInputBaseContentWrapper,
+.opsSearch .sapMInputBaseInner {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.opsVehicleSelect .sapMInputBaseContentWrapper {
+    border: none !important;
+    border-radius: 1.5rem;
+    background: var(--ops-orange) !important;
+    box-shadow: 0 6px 16px rgba(255, 90, 46, 0.30);
+}
+
+.opsVehicleSelect .sapMInputBaseInner,
+.opsVehicleSelect .sapUiIcon {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* ---------- Hero ---------- */
+.opsTruckContainer {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.opsHeroImage {
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--fleet-radius-lg);
+    box-shadow: var(--fleet-shadow-md);
+}
+
+.opsCargoOverlay {
+    position: absolute;
+    top: 8%;
+    right: 4%;
+    width: 52%;
+    gap: 0.6rem;
+}
+
+.opsCargoTile {
+    flex: 1 1 28%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--fleet-edge);
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.82);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--fleet-shadow-sm);
+}
+
+.opsTileLabel { color: var(--ops-muted); font-size: 0.75rem; }
+
+/* ---------- Segmented filters ---------- */
+.opsFilterRow { margin-bottom: 1.5rem; gap: 0.75rem; }
+
+.opsSegmented {
+    padding: 3px;
+    border: none !important;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: var(--fleet-shadow-sm);
+}
+
+.opsSegmented .sapMSegBBtn {
+    border: none !important;
+    border-radius: 2rem !important;
+    background: transparent !important;
+    color: var(--ops-ink);
+}
+
+.opsSegmented .sapMSegBBtnSel,
+.opsSegmented .sapMSegBBtnSel:hover {
+    background: var(--ops-ink) !important;
+    color: #ffffff !important;
+}
+
+.opsSegmentedAccent .sapMSegBBtnSel,
+.opsSegmentedAccent .sapMSegBBtnSel:hover {
+    background: var(--ops-orange) !important;
+}
+
+/* ---------- Cargo cards ---------- */
+.opsCargoScroll { margin-bottom: 2rem; padding-bottom: 1rem; }
+
+.opsCargoCard {
+    flex: 0 0 15rem;
+    min-width: 13rem;
+    margin-right: 1rem;
+    padding: 1.1rem 1.25rem;
+    box-sizing: border-box;
+    border: 1px solid var(--fleet-edge);
+    border-radius: var(--fleet-radius-md);
+    background: var(--ops-card);
+    box-shadow: var(--fleet-shadow-sm);
+    transition: transform 0.25s var(--fleet-ease), box-shadow 0.25s var(--fleet-ease);
+}
+
+.opsCargoCard:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--fleet-shadow-md);
+}
+
+.opsCardTop { margin-bottom: 0.75rem; gap: 0.5rem; }
+.opsCardValue { margin-bottom: 0.25rem; }
+.opsCardGap { margin-bottom: 0.9rem; }
+.opsDetailValue { margin-bottom: 0.75rem; }
+
+.opsPillPrimary,
+.opsPillDark,
+.opsPillLive {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.opsPillPrimary { background: var(--ops-pill); color: #ffffff; }
+.opsPillDark    { background: var(--ops-ink); color: #ffffff; }
+.opsPillLive    { background: var(--ops-orange); color: #ffffff; margin-left: 0.5rem; }
+
+/* ---------- Bottom row ---------- */
+.opsBottomRow { gap: 1rem; }
+
+.opsPanel {
+    padding: 1.25rem;
+    box-sizing: border-box;
+    border: 1px solid var(--fleet-edge);
+    border-radius: var(--fleet-radius-md);
+    background: var(--ops-card);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--fleet-shadow-sm);
+}
+
+.opsMapCard     { flex: 2 1 18rem; }
+.opsDetailsCard { flex: 1 1 11rem; }
+.opsStatsCol    { flex: 1 1 11rem; gap: 1rem; }
+.opsStatCard    { flex: 1 1 auto; }
+
+.opsMapImage {
+    object-fit: cover;
+    border-radius: var(--fleet-radius-md);
+}
+
+/* Segmented progress bars */
+.opsBar { gap: 4px; height: 0.9rem; }
+.opsBarSeg { height: 100%; border-radius: 4px; }
+.opsBarOn.opsBarViolet { background: #5c47ff; }
+.opsBarOn.opsBarGreen  { background: var(--fleet-green); }
+.opsBarOff { background: #e6e1ee; }
+
+/* ---------- Camera card ---------- */
+.opsCameraCard {
+    flex: 1.4 1 14rem;
+    padding: 1.4rem;
+    box-sizing: border-box;
+    border-radius: var(--fleet-radius-md);
+    background: linear-gradient(180deg, #3a3b3d 0%, #1a1a1c 100%);
+    box-shadow: var(--fleet-shadow-md);
+}
+
+.opsCameraText { color: #ffffff !important; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); }
+.opsCameraTitle { font-weight: 700; }
+.opsCameraSmall { font-size: 0.7rem; }
+.opsCameraMeta { margin-top: 0.25rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .opsPage { padding: 1rem; }
+    .opsTitle { font-size: 1.6rem !important; }
+    .opsHeroImage { height: 240px !important; }
+
+    .opsCargoOverlay {
+        position: static;
+        width: 100%;
+        margin-top: 0.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .opsCargoCard { transition: none; }
+    .opsCargoCard:hover { transform: none; }
+}

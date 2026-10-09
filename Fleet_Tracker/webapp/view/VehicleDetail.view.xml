@@ -8,21 +8,21 @@
     <Page showHeader="false" enableScrolling="true" backgroundDesign="Transparent">
         <content>
             <VBox class="fleetPage" width="100%">
-                
-                <!-- Top Header Area (Dropdown, Weather, Actions) -->
-                <HBox class="fleetFormCard sapUiSmallMarginBottom" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap" style="padding: 1rem 2rem;">
-                    
+
+                <!-- Top header: vehicle selector, weather, actions -->
+                <HBox class="fleetFormCard fleetTopBar sapUiSmallMarginBottom" alignItems="Center" justifyContent="SpaceBetween" wrap="Wrap">
+
                     <HBox alignItems="Center">
-                        <core:Icon src="sap-icon://car" size="2.5rem" class="sapUiMediumMarginRight" color="#7956cf"/>
+                        <core:Icon src="sap-icon://car" size="2.5rem" class="fleetKpiIcon sapUiMediumMarginEnd"/>
                         <VBox>
                             <HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                                <Title text="Select Vehicle:" level="H6" class="sapUiSmallMarginRight"/>
+                                <Title text="Select vehicle:" level="H6" class="sapUiSmallMarginEnd"/>
                                 <ComboBox id="vehicleSelect"
                                     selectedKey="{view>/selectedVehicle}"
                                     selectionChange=".onVehicleSelect"
                                     items="{fleet>/vehicles}"
                                     width="16rem">
-                                    <core:Item key="{fleet>id}" text="{fleet>id} - {fleet>driver}" />
+                                    <core:Item key="{fleet>id}" text="{fleet>id} - {fleet>driver}"/>
                                 </ComboBox>
                             </HBox>
                             <Text text="VIN: 1RNCS5003M012222" class="fleetSubtitle"/>
@@ -33,70 +33,68 @@
                         <VBox>
                             <Title text="Weather" level="H6" class="fleetSubtitle sapUiTinyMarginBottom"/>
                             <HBox alignItems="Baseline">
-                                <Text text="Temperature" class="sapUiTinyMarginRight fleetSubtitle"/>
-                                <Title text="30°F" level="H4" class="sapUiLargeMarginRight"/>
-                                <Text text="Humidity" class="sapUiTinyMarginRight fleetSubtitle"/>
+                                <Text text="Temperature" class="sapUiTinyMarginEnd fleetSubtitle"/>
+                                <Title text="30°F" level="H4" class="sapUiLargeMarginEnd"/>
+                                <Text text="Humidity" class="sapUiTinyMarginEnd fleetSubtitle"/>
                                 <Title text="44%" level="H4"/>
                             </HBox>
                         </VBox>
                     </HBox>
 
                     <HBox alignItems="Center" class="sapUiLargeMarginBegin">
-                        <Button text="View location" type="Transparent" class="sapUiMediumMarginRight"/>
-                        <Button text="Activity log" type="Transparent"/>
+                        <Button text="View location" type="Transparent" class="fleetBtn sapUiMediumMarginEnd"/>
+                        <Button text="Activity log" type="Transparent" class="fleetBtn"/>
                     </HBox>
                 </HBox>
 
-                <!-- Icon Tab Bar -->
+                <!-- Tabs -->
                 <IconTabBar selectedKey="health" class="sapUiNoMarginBottom fleetTransparentTabBar" backgroundDesign="Transparent" applyContentPadding="false">
                     <items>
-                        <IconTabFilter text="Overview" key="overview" />
-                        <IconTabFilter text="Vehicle Health" key="health" />
-                        <IconTabFilter text="Documents" key="docs" />
-                        <IconTabFilter text="Service History" key="service" />
+                        <IconTabFilter text="Overview" key="overview"/>
+                        <IconTabFilter text="Vehicle health" key="health"/>
+                        <IconTabFilter text="Documents" key="docs"/>
+                        <IconTabFilter text="Service history" key="service"/>
                     </items>
                     <content>
-                        <!-- Content for Vehicle Health -->
                         <layout:Grid defaultSpan="L8 M12 S12" class="sapUiNoMargin" hSpacing="1" vSpacing="1">
-                            
-                            <!-- Left Column -->
+
+                            <!-- Left column -->
                             <VBox>
                                 <layoutData><layout:GridData span="L8 M12 S12"/></layoutData>
-                                
-                                <!-- Vehicle Battery Section -->
+
+                                <!-- Vehicle battery -->
                                 <VBox class="fleetFormCard sapUiSmallMarginBottom">
                                     <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiMediumMarginBottom" wrap="Wrap">
                                         <Title text="Vehicle battery" level="H3"/>
                                         <HBox alignItems="Center">
-                                            <core:Icon src="sap-icon://sys-help-2" class="sapUiTinyMarginRight" color="#77718f"/>
+                                            <core:Icon src="sap-icon://sys-help-2" class="sapUiTinyMarginEnd" color="#6b6585"/>
                                             <Text text="Predicted cold weather tomorrow may affect range. Set top of charge to 100% in trip range." class="fleetSubtitle"/>
                                         </HBox>
                                     </HBox>
 
-                                    <!-- Battery Sub-cards using flex layouts instead of grids to prevent squishing -->
                                     <HBox justifyContent="SpaceBetween" wrap="Wrap">
-                                        
-                                        <!-- Battery Health -->
+
+                                        <!-- Battery health -->
                                         <VBox width="32%" class="fleetBorderedBox">
                                             <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                                                 <Title text="Battery health" level="H5"/>
-                                                <Link text="View More"/>
+                                                <Link text="View more"/>
                                             </HBox>
                                             <Text text="Current estimated max range is 200 mi" class="sapUiMediumMarginBottom fleetSubtitle" width="100%"/>
-                                            
+
                                             <mc:BulletMicroChart scale="%" targetValue="100" actualValueLabelFlag="true" forecastValue="80" showValueMarker="false" size="Responsive" width="100%" class="sapUiMediumMarginBottom">
                                                 <mc:actual>
                                                     <mc:BulletMicroChartData value="67" color="Good"/>
                                                 </mc:actual>
                                             </mc:BulletMicroChart>
-                                            
+
                                             <VBox width="100%">
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
-                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#159b68" class="sapUiTinyMarginRight"/><Text text="Current charge" class="fleetSubtitle"/></HBox>
+                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#12905f" class="sapUiTinyMarginEnd"/><Text text="Current charge" class="fleetSubtitle"/></HBox>
                                                     <Title text="67%" level="H6"/>
                                                 </HBox>
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
-                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#d1d1d1" class="sapUiTinyMarginRight"/><Text text="Charge capacity" class="fleetSubtitle"/></HBox>
+                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#d1d1d1" class="sapUiTinyMarginEnd"/><Text text="Charge capacity" class="fleetSubtitle"/></HBox>
                                                     <Title text="90%" level="H6"/>
                                                 </HBox>
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop">
@@ -106,25 +104,25 @@
                                             </VBox>
                                         </VBox>
 
-                                        <!-- Charge Cycle -->
+                                        <!-- Charge cycle -->
                                         <VBox width="32%" class="fleetBorderedBox">
                                             <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
-                                                <Title text="Charge Cycle" level="H5"/>
-                                                <Link text="View More"/>
+                                                <Title text="Charge cycle" level="H5"/>
+                                                <Link text="View more"/>
                                             </HBox>
                                             <Text text="Decrease fast charging for vehicle" class="sapUiMediumMarginBottom fleetSubtitle" width="100%"/>
-                                            
+
                                             <HBox justifyContent="Center" class="sapUiMediumMarginBottom">
                                                 <mc:RadialMicroChart size="L" percentage="37" valueColor="Critical"/>
                                             </HBox>
-                                            
+
                                             <VBox width="100%">
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
-                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#d98724" class="sapUiTinyMarginRight"/><Text text="Fast charge cycles" class="fleetSubtitle"/></HBox>
+                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#d17a14" class="sapUiTinyMarginEnd"/><Text text="Fast charge cycles" class="fleetSubtitle"/></HBox>
                                                     <Title text="22" level="H6"/>
                                                 </HBox>
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
-                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#005f9e" class="sapUiTinyMarginRight"/><Text text="Slow charge cycles" class="fleetSubtitle"/></HBox>
+                                                    <HBox alignItems="Center"><core:Icon src="sap-icon://circle-task-2" color="#005f9e" class="sapUiTinyMarginEnd"/><Text text="Slow charge cycles" class="fleetSubtitle"/></HBox>
                                                     <Title text="15" level="H6"/>
                                                 </HBox>
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop">
@@ -134,20 +132,20 @@
                                             </VBox>
                                         </VBox>
 
-                                        <!-- Trip Range -->
+                                        <!-- Trip range -->
                                         <VBox width="32%" class="fleetBorderedBox">
                                             <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                                                 <Title text="Trip range" level="H5"/>
-                                                <Link text="View More"/>
+                                                <Link text="View more"/>
                                             </HBox>
                                             <Text text="Current range is 135 mi" class="sapUiMediumMarginBottom fleetSubtitle" width="100%"/>
-                                            
+
                                             <mc:BulletMicroChart scale="%" targetValue="100" actualValueLabelFlag="true" size="Responsive" width="100%" class="sapUiMediumMarginBottom">
                                                 <mc:actual>
                                                     <mc:BulletMicroChartData value="80" color="Good"/>
                                                 </mc:actual>
                                             </mc:BulletMicroChart>
-                                            
+
                                             <VBox width="100%">
                                                 <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
                                                     <Text text="Standard range" class="fleetSubtitle"/>
@@ -163,39 +161,38 @@
                                     </HBox>
                                 </VBox>
 
-                                <!-- Tire Pressure Section -->
+                                <!-- Tire pressure -->
                                 <VBox class="fleetFormCard">
-                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiLargeMarginBottom">
-                                        <Title text="Tire Pressure" level="H3"/>
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiLargeMarginBottom" wrap="Wrap">
+                                        <Title text="Tire pressure" level="H3"/>
                                         <HBox alignItems="Center">
-                                            <core:Icon src="sap-icon://message-warning" class="sapUiTinyMarginRight" color="#d98724"/>
+                                            <core:Icon src="sap-icon://message-warning" class="sapUiTinyMarginEnd" color="#d17a14"/>
                                             <Text text="Low pressure on rear right tire" class="fleetSubtitle"/>
                                         </HBox>
                                     </HBox>
 
-                                    <!-- Improved Tire Image Layout -->
                                     <HBox justifyContent="Center" alignItems="Center" class="sapUiMediumMarginBottom">
-                                        
+
                                         <VBox justifyContent="SpaceBetween" height="220px" class="sapUiLargeMarginEnd">
                                             <VBox alignItems="End">
-                                                <Text text="Left Rear" class="fleetSubtitle"/>
+                                                <Text text="Left rear" class="fleetSubtitle"/>
                                                 <Title text="32.5 psi" level="H4"/>
                                             </VBox>
                                             <VBox alignItems="End">
-                                                <Text text="Right Rear" class="fleetSubtitle"/>
-                                                <Title text="22 psi" level="H4" class="fleetRed"/>
+                                                <Text text="Right rear" class="fleetSubtitle"/>
+                                                <ObjectStatus text="22 psi" state="Error" icon="sap-icon://alert" class="fleetTireLow"/>
                                             </VBox>
                                         </VBox>
-                                        
-                                        <Image src="{fleet>imageUrl}" width="380px" height="220px" densityAware="false" decorative="true" style="object-fit: contain; border-radius: 1rem;"/>
-                                        
+
+                                        <Image src="{fleet>imageUrl}" width="380px" height="220px" densityAware="false" decorative="true" class="fleetVehicleImage"/>
+
                                         <VBox justifyContent="SpaceBetween" height="220px" class="sapUiLargeMarginBegin">
                                             <VBox alignItems="Start">
-                                                <Text text="Left Front" class="fleetSubtitle"/>
+                                                <Text text="Left front" class="fleetSubtitle"/>
                                                 <Title text="32.5 psi" level="H4"/>
                                             </VBox>
                                             <VBox alignItems="Start">
-                                                <Text text="Right Front" class="fleetSubtitle"/>
+                                                <Text text="Right front" class="fleetSubtitle"/>
                                                 <Title text="32.5 psi" level="H4"/>
                                             </VBox>
                                         </VBox>
@@ -203,57 +200,58 @@
                                 </VBox>
                             </VBox>
 
-                            <!-- Right Column -->
+                            <!-- Right column -->
                             <VBox>
                                 <layoutData><layout:GridData span="L4 M12 S12"/></layoutData>
-                                
-                                <!-- Summary Card -->
-                                <VBox class="fleetFormCard sapUiSmallMarginBottom">
-                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiMediumMarginBottom">
-                                        <HBox alignItems="Baseline">
-                                            <Title text="Summary" level="H3" class="sapUiSmallMarginRight"/>
-                                            <Text text="Last Serviced 3/11/2021" class="fleetSubtitle" style="font-size: 0.8rem;"/>
-                                        </HBox>
-                                        <Button text="Service" type="Emphasized"/>
+
+                                <!-- Summary -->
+                                <VBox class="fleetShowcaseCard sapUiSmallMarginBottom">
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiMediumMarginBottom" wrap="Wrap">
+                                        <VBox>
+                                            <Title text="Summary" level="H3"/>
+                                            <Text text="Last serviced 3/11/2021" class="fleetSubtitle fleetSmallText"/>
+                                        </VBox>
+                                        <Button text="Book service" type="Emphasized" class="fleetBtn"/>
                                     </HBox>
 
-                                    <Title text="Vehicle Health" level="H5" class="sapUiSmallMarginBottom"/>
+                                    <Title text="Vehicle health" level="H5" class="sapUiSmallMarginBottom"/>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Score" class="fleetSubtitle"/><ObjectStatus text="Unhealthy" state="Warning" icon="sap-icon://message-warning"/></HBox>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Mileage" class="fleetSubtitle"/><Title text="2,000 mi" level="H6"/></HBox>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Service date" class="fleetSubtitle"/><Title text="05/11/2021" level="H6"/></HBox>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Next appointment" class="fleetSubtitle"/><Title text="Convenience" level="H6"/></HBox>
 
-                                    <Title text="Battery Health" level="H5" class="sapUiLargeMarginTop sapUiSmallMarginBottom"/>
-                                    <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="State of Health" class="fleetSubtitle"/><ObjectStatus text="80% GOOD" state="Success"/></HBox>
+                                    <Title text="Battery health" level="H5" class="sapUiLargeMarginTop sapUiSmallMarginBottom"/>
+                                    <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="State of health" class="fleetSubtitle"/><ObjectStatus text="80% Good" state="Success"/></HBox>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Charge capacity" class="fleetSubtitle"/><Title text="90%" level="H6"/></HBox>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Total charge cycles" class="fleetSubtitle"/><Title text="37" level="H6"/></HBox>
                                     <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom"><Text text="Current range" class="fleetSubtitle"/><Title text="120 mi" level="H6"/></HBox>
                                 </VBox>
 
-                                <!-- Vehicle Faults Card -->
+                                <!-- Vehicle faults -->
                                 <VBox class="fleetFormCard">
                                     <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiMediumMarginBottom">
-                                        <Title text="Vehicle Faults" level="H3"/>
-                                        <Link text="View All"/>
+                                        <Title text="Vehicle faults" level="H3"/>
+                                        <Link text="View all"/>
                                     </HBox>
 
                                     <VBox class="fleetBorderedBox sapUiSmallMarginBottom">
                                         <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom">
-                                            <HBox alignItems="Center"><core:Icon src="sap-icon://alert" color="#d98724" class="sapUiTinyMarginRight"/><Title text="Low Tire Pressure" level="H5"/></HBox>
-                                            <Text text="CRITICAL" class="fleetRed" style="font-size:0.75rem; font-weight:bold;"/>
+                                            <HBox alignItems="Center"><core:Icon src="sap-icon://alert" color="#d63f5c" class="sapUiTinyMarginEnd"/><Title text="Low tire pressure" level="H5"/></HBox>
+                                            <ObjectStatus text="Critical" state="Error" inverted="true"/>
                                         </HBox>
-                                        <Title text="Detected Dec, 23 at 1:41 AM" level="H6"/>
+                                        <Title text="Detected Dec 23 at 1:41 AM" level="H6"/>
                                         <Title text="Driving continued 4 mi" level="H6"/>
-                                        <Text text="Right rear tire pressure is low, please refill" class="sapUiTinyMarginTop fleetSubtitle"/>
+                                        <Text text="Right rear tire pressure is low. Refill the tire." class="sapUiTinyMarginTop fleetSubtitle"/>
                                     </VBox>
 
                                     <VBox class="fleetBorderedBox">
                                         <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginBottom">
-                                            <HBox alignItems="Center"><core:Icon src="sap-icon://alert" color="#d98724" class="sapUiTinyMarginRight"/><Title text="12v Battery error" level="H5"/></HBox>
+                                            <HBox alignItems="Center"><core:Icon src="sap-icon://alert" color="#d17a14" class="sapUiTinyMarginEnd"/><Title text="12V battery error" level="H5"/></HBox>
+                                            <ObjectStatus text="Warning" state="Warning" inverted="true"/>
                                         </HBox>
-                                        <Title text="Detected Dec, 23 at 1:41 AM" level="H6"/>
+                                        <Title text="Detected Dec 23 at 1:41 AM" level="H6"/>
                                         <Title text="Driving continued 4 mi" level="H6"/>
-                                        <Text text="12v battery needs replaced" class="sapUiTinyMarginTop fleetSubtitle"/>
+                                        <Text text="The 12V battery needs to be replaced." class="sapUiTinyMarginTop fleetSubtitle"/>
                                     </VBox>
                                 </VBox>
 
